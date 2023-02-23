@@ -1,0 +1,1465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+    <title>Pythonopolis</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="https://www.online-python.com/assets/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./data/css/op.css">
+    <!-- Google Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <!-- jQuery 3 -->
+    <script src="https://www.online-python.com/assets/bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap 3.3.7 -->
+    <script src="https://www.online-python.com/assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- stop_python() -->
+    <script src="data/js/run.js"></script>
+    <!-- Ace Editor -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.8/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.8/ext-language_tools.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.8/ext-settings_menu.min.js" type="text/javascript" charset="utf-8"></script>
+    <script async="" src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.8/ext-keybinding_menu.min.js" type="text/javascript" charset="utf-8"></script>
+    <!-- Split JS -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/split.js/1.6.2/split.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
+    <script async="" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+
+    <link rel="preload" href="https://www.w3schools.com/lib/fonts/fontawesome.woff2?14663396" as="font" type="font/woff2" crossorigin=""> 
+    <link rel="preload" href="https://www.w3schools.com/lib/fonts/source-code-pro-v14-latin-regular.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="./w3_files/w3schools30.css">
+
+    <!-- GitHub Scripts -->
+    <script src="data/js/ace-builds/src-noconflict/ace.js" type="text/javascript"></script>
+    <script src="data/js/ace-builds/src-noconflict/ext-language_tools.js" type="text/javascript"></script>
+    <script src="data/js/skulpt/skulpt.js" type="text/javascript"></script>
+    <script src="data/js/skulpt/skulpt-stdlib.js" type="text/javascript"></script>
+    <link href="data/css/style.css" rel="stylesheet">
+    <link href="data/fonts/fontawesome-free-6.1.1-web/css/fontawesome.min.css" rel="stylesheet">
+    <link href="data/fonts/fontawesome-free-6.1.1-web/css/solid.min.css" rel="stylesheet">
+    <link href="data/fonts/fontawesome-free-6.1.1-web/css/brands.min.css" rel="stylesheet">
+
+	<style>
+        /*
+        body {
+            color:#000000;
+            margin:0px;
+            font-size:100%;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        */
+        /*drop down*/
+    
+    /* Stop Button */
+    #run-btn, #stop-btn::before{
+      background-color:#333;
+    }
+    #run-btn, #stop-btn::after{
+      background-color:#333;
+      background-color:var(--button-bg-color);
+      transition:var(--transition-delay)
+    }
+		
+		.navbar {
+		  
+		  background-color: #333;
+		}
+    .navbar::before{
+      display:none;
+    }
+		
+		.navbar a {
+		  float: left;
+		  font-size: 16px;
+		  color: white;
+		  text-align: center;
+		  padding: 14px 16px;
+		  text-decoration: none;
+		}
+		
+		.dropdown {
+		  float: left;
+		 
+		}
+		
+		.dropdown .dropbtn {
+		  font-size: 16px;  
+		  border: none;
+		  outline: none;
+		  color: white;
+		  padding: 14px 16px;
+		  background-color: inherit;
+		  font-family: inherit;
+		  margin: 0;
+		}
+		
+		.navbar a:hover, .dropdown:hover .dropbtn {
+		  background-color: #999999;
+      display:block;
+		}
+		
+		.dropdown-content {
+		  display: none;
+		  position: absolute;
+		  background-color: #f9f9f9;
+		  min-width: 160px;
+		  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+		  z-index: 8;
+		}
+		
+		.dropdown-content a {
+		  float: none;
+		  color: black;
+		  padding: 12px 16px;
+		  text-decoration: none;
+		  display: block;
+		  text-align: left;
+		}
+		
+		.dropdown-content a:hover {
+		  background-color: #999999;
+		}
+		
+		.dropdown:hover .dropdown-content {
+		  display: block;
+		}
+	</style>
+
+
+    <!-- w3 -->
+    <style>
+        * {
+          -webkit-box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          box-sizing: border-box;
+        }
+        body {
+          color:#000000;
+          margin:0px;
+          font-size:100%;
+        }
+        .trytopnav {
+          height:48px;
+          overflow:hidden;
+          min-width:380px;
+          position:absolute;
+          width:100%;
+          top:99px;
+          background-color:#E7E9EB;
+        }
+        .topnav-icons {
+          margin-right:8px;
+        }
+        .trytopnav a,.trytopnav button {
+          color:#999999;
+        }
+        .w3-bar .w3-bar-item:hover {
+          color:#757575 !important;
+        }
+        a.w3schoolslink {
+          padding:0 !important;
+          display:inline !important;
+        }
+        a.w3schoolslink:hover,a.w3schoolslink:active {
+          text-decoration:underline !important;
+          background-color:transparent !important;
+        }
+        #dragbar{
+          position:absolute;
+          cursor: col-resize;
+          z-index:3;
+          padding:5px;
+        }
+        #shield {
+          display:none;
+          top:0;
+          left:0;
+          width:100%;
+          position:absolute;
+          height:100%;
+          z-index:4;
+        }
+        #framesize span {
+          font-family:Consolas, monospace;
+        }
+        #container {
+          width:100%;
+          overflow:auto;
+          position:absolute;
+          top:65px;
+          bottom:0;
+        }
+        #textareacontainer, #iframecontainer {
+          float:left;
+          height:100%;
+          width:100%;
+        }
+        #textarea, #iframe {
+          height:100%;
+          width:100%;
+          padding-bottom:10px;
+          padding-top:1px;
+        }
+        #textarea {
+          padding-left:10px;
+          padding-right:5px;  
+        }
+        #iframe {
+          padding-left:5px;
+          padding-right:10px;
+          color:#ffffff;
+          font-family: consolas,"courier new",monospace;    
+        }
+        #textareawrapper {
+          width:100%;
+          height:100%;
+          background-color: #ffffff;
+          position:relative;
+          box-shadow:0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        }
+        #iframewrapper {
+          width:100%;
+          height:100%;
+          -webkit-overflow-scrolling: touch;
+          background-color: #ffffff;
+          box-shadow:0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+          color:#ffffff;
+          font-family: consolas,"courier new",monospace;  
+        }
+        #textareaCode, #textareaCodeInput, #textareaCode2, #textareaCode3 {
+          background-color: #ffffff;
+          font-family: consolas,"courier new",monospace;
+          font-size:15px;
+          height:100%;
+          width:100%;
+          padding:8px;
+          resize: none;
+          border:none;
+          line-height:normal;    
+        }
+        
+        .CodeMirror.cm-s-default {
+          line-height:normal;
+          padding: 4px;
+          height:100%;
+          width:100%;
+        }
+        #iframeResult, #iframeSource {
+          background-color: #000000;
+          color:#ffffff;
+          font-family: consolas,"courier new",monospace!important;  
+          height:100%;
+          width:100%;  
+          padding:8px;
+        }
+        #iframeResult * {
+          font-family: consolas,"courier new",monospace!important;  
+        }
+        #stackV {background-color:#999999;}
+        #stackV:hover {background-color:#BBBBBB !important;}
+        #stackV.horizontal {background-color:transparent;}
+        #stackV.horizontal:hover {background-color:#BBBBBB !important;}
+        #stackH.horizontal {background-color:#999999;}
+        #stackH.horizontal:hover {background-color:#999999 !important;}
+        #textareacontainer.horizontal,#iframecontainer.horizontal{
+          height:50%;
+          float:none;
+          width:100%;
+        }
+        #textarea.horizontal{
+          height:100%;
+          padding-left:10px;
+          padding-right:10px;
+        }
+        #iframe.horizontal{
+          height:100%;
+          padding-right:10px;
+          padding-bottom:10px;
+          padding-left:10px;  
+        }
+        #container.horizontal{
+          min-height:200px;
+          margin-left:0;
+        }
+        #tryitLeaderboard {
+          background-color:#ffffff;
+          overflow:hidden;
+          text-align:center;
+          margin-top:5px;
+          height:90px;
+        }
+        .w3-dropdown-content {width:350px}
+
+        #getwebsitebtn {
+          background-color:#04AA6D;
+          font-family: 'Source Sans Pro', sans-serif;  
+          color: white;
+          font-size: 18px;
+          padding:6px 15px;
+          margin-top:4px;
+          margin-right: 10px;
+          display: block;
+          float: right;
+          border-radius: 5px;
+        }
+        #getwebsitebtn:hover {
+          background-color: #059862 !important;
+          color:white!important;
+        }
+        
+        @media screen and (max-width: 727px) {
+          .trytopnav {top:70px;}
+          #container {top:116px;}
+        }
+        @media screen and (max-width: 467px) {
+          .trytopnav {top:60px;}
+          #container {top:106px;}
+          .w3-dropdown-content {width:100%}
+        }
+        @media only screen and (max-device-width: 768px) {
+          #iframewrapper {overflow: auto;}
+          #container     {min-width:320px;}
+          .stack         {display:none;}
+          #tryhome       {display:block;}
+        }
+        
+        @font-face {
+        font-family: 'fontawesome';
+        src:url('../lib/fonts/fontawesome.eot?14663396');
+        src:url('../lib/fonts/fontawesome.eot?14663396#iefix') format('embedded-opentype'),
+            url('../lib/fonts/fontawesome.woff?14663396') format('woff'),
+            url('../lib/fonts/fontawesome.ttf?14663396') format('truetype'),
+            url('../lib/fonts/fontawesome.svg?14663396#fontawesome') format('svg');
+        font-weight:normal;
+        font-style:normal;
+        }
+        .fa {
+          display:inline-block;
+          font:normal normal normal 14px/1 FontAwesome;
+          font-size:inherit;
+          text-rendering:auto;
+          -webkit-font-smoothing:antialiased;
+          -moz-osx-font-smoothing:grayscale;
+          transform:translate(0,0);
+        }
+        .fa-2x {
+          font-size:2em;
+        }
+        .fa-home:before {content: '\e800'; }
+        .fa-save:before {content: '\e804'; }
+        .fa-rotate:before {content: '\e813'; }
+        .fa-adjust:before { content: '\e80b'; }
+        .fa-menu:before { content: '\f0c9'; }
+        .loader {
+            border: 6px solid #f3f3f3; /* Light grey */
+            border-top: 6px solid #3498db; /* Blue */
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 2s linear infinite;
+        }
+        #saveLoader {
+            margin:20px;
+        }
+        #runloadercontainer{
+          display:none;
+          position:absolute;
+          background-color:#000;
+          z-index:9;
+        }
+        #runloader{
+          margin:auto;
+          border: 10px solid #333;
+          border-top: 10px solid #04AA6D;
+          border-radius: 50%;
+          max-width: 150px;
+          max-height: 150px;
+          animation: spin 2s linear infinite;
+          position:relative;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        
+       
+        .tabs {
+          list-style-type: none;
+          padding: 0;
+          margin: 0;
+          margin-bottom: -1px;
+          background-color:#E7E9EB;
+        }
+        .tab {
+          padding: 5px 10px;
+          background: #ddd;
+          width: fit-content;
+          display: inline-block;
+          cursor: pointer;
+        
+          }
+        .tab.active {
+          background: #fff;
+          border-bottom-color: white !important;
+        }
+        
+        .tab-pane {
+          display: none;
+        }
+        .tab-pane.active { 
+          display: block;
+        }
+        a.topnav-icons, a.topnav-icons.fa-home, a.topnav-icons.fa-menu, button.topnav-icons.fa-adjust {
+            font-size: 28px!important;
+        }
+        #langOption:hover {
+          color:#000!important;
+          outline:1px solid #ccc;
+        }
+        
+        
+        body.darktheme {
+          background-color:rgb(40, 44, 52);
+          background-color:#1d2a35;  
+          color: #ddd;  
+        
+        }
+        body.darktheme #tryitLeaderboard{
+          background-color:rgb(40, 44, 52);
+          background-color:#1d2a35;
+          color: #ddd;  
+          
+        }
+        body.darktheme .trytopnav{
+          background-color:#616161;
+          background-color:#38444d;  
+          color:#dddddd;
+        }
+        body.darktheme #container {
+          background-color:#616161;
+          background-color:#38444d;  
+        }
+        body.darktheme #textareaCode, body.darktheme #textareaCodeInput, body.darktheme #textareaCode2, body.darktheme #textareaCode3 {
+          background-color:rgb(40, 44, 52);
+          color:#fff;
+          background-color:#1d2a35;
+          background-color:rgb(21,32,43);
+          
+          color: #ddd;    
+        }
+        
+        body.darktheme .trytopnav a,body.darktheme .trytopnav button {
+          color:#dddddd;
+        }
+        
+        body.darktheme .tabs {
+          background-color:#616161;
+          background-color:#38444d;  
+          color: #ddd;  
+        }
+        body.darktheme .tab {
+          background-color:#616161;
+          background-color:#4b5b68;  
+          color: #ddd;  
+        }
+        body.darktheme .tab.active {
+            background: rgb(40, 44, 52);
+            color:#fff;
+          background-color:#1d2a35;
+          background-color:rgb(21,32,43);
+          
+          color: #ddd;  
+            border-bottom-color: rgb(40, 44, 52)!important;
+            border-bottom-color: #1d2a35!important;
+        }
+        body.darktheme #textareawrapper {
+          background-color: rgb(40, 44, 52)!important;
+          background-color:#1d2a35!important;
+          background-color:rgb(21,32,43)!important;
+          color: #ddd;  
+            
+        }
+
+        #lineCounter:focus-visible,
+		#codeEditor:focus-visible {
+			outline:none;
+		}
+
+		#lineCounter {
+			display: flex;
+			border-color: transparent;
+			overflow-y: hidden;
+			text-align: right;
+			box-shadow: none;
+			color: #707070;
+			background-color: #d8d8d8;
+			position: absolute;
+			width: 3.5rem;
+			/* Determine appearance of line counter */
+			background-color:#3E3D32;
+			border-color:#3E3D32;
+			color:#928869;
+		}
+
+		#codeEditor {
+			padding-left: calc(3.5rem + 5px);
+			width:100%;
+			/* Determine appearance of code editor */
+			background-color:#272822;
+			border-color:#272822;
+			color:#ffffff;
+		}
+         /* side bar*/
+         
+        .sidebar {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #333;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+        }
+
+        .tempp {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #333;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+        }
+
+        .sidebar a {
+        padding: 8px 8px 8px 12px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #ffffff;
+        display: block;
+        transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+        color: #f1f1f1;
+        }
+
+        .sidebar .closebtn {
+        position: absolute;
+        top: 0;
+        font-size: 20px;
+        padding: 10px 15px;
+        }
+
+
+        .openbtn {
+        font-size: 20px;
+        cursor: pointer;
+        background-color: #333;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        }
+
+        .openbtn:hover {
+        background-color: #444;
+        }
+
+        button {
+          background-color: #333;
+          color: black;
+          border: 0;
+          box-shadow:0;
+          padding-top: 10px;
+          padding-bottom: 10px;
+        }
+
+        button:hover {
+          background-color: #999999;
+        }
+
+        #main {
+        transition: margin-left .5s;
+        padding: 10px;
+        }
+
+        #tempItem{
+          opacity:0;
+          width:max-content;
+          text-align: center;
+          position: absolute;
+          max-height:10rem;
+          overflow-y: scroll;
+          background:white;
+          color:black;
+          top:4rem;
+          left:10.7rem;
+          transition:all 0.2s ease;
+
+        }
+        #tempItem.active{
+          opacity:1;
+         
+        }
+        #tempItem .tempdropdown{
+          cursor:pointer;
+          padding:0.5rem 0.8rem;
+          margin: 0;
+          transition: all 0.3s ease;
+          border-bottom:0.5px solid gray;
+          
+        }
+        #tempItem .tempdropdown:hover{
+          background:rgba(1,1,1,0.8);
+          color:white;
+          
+        }
+
+        /* adaptable */
+        /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+        @media screen and (max-height: 450px) {
+        .sidebar {padding-top: 15px;}
+        .sidebar a {font-size: 18px;}
+        }
+    </style>
+</head>
+<body>
+    <!-- nav bar -->
+	<div class="navbar" style="border-radius: 0px;">
+    <div class="dropdown">
+        <button class="openbtn" onclick="openNav()">☰</button>
+    </div>
+    
+    <!-- file -->
+		<div class="dropdown">
+			<button class="dropbtn">File</button>
+			<div class="dropdown-content" data-trigger="hover">
+				<button style = "width: 160px; text-align: left; background-color: #f9f9f9; color: black;">New file</a>
+				<button id = "open_file" onclick="openFile(dispFile)" style = "width: 160px; text-align: left; background-color: #f9f9f9; color: black;">Open file</a>
+				<button onclick="download_code()" style = "width: 160px; text-align: left; background-color: #f9f9f9; color: black;">Save</button>
+			</div>
+		</div>
+
+    <!-- edit -->
+		<div class="dropdown">
+			<button class="dropbtn">Edit</button>
+			<div class="dropdown-content">
+				<button id="undo-editor" style = "width: 160px; text-align: left; background-color: #f9f9f9; color: black;">Undo</button>
+				<button id="redo-editor" style = "width: 160px; text-align: left; background-color: #f9f9f9; color: black;">Redo</button>
+			</div>
+		</div>
+
+    <!-- selection -->
+		<div class="dropdown">
+			<button class="dropbtn">Selection</button>
+			<div class="dropdown-content">
+				<a href="#">Suggested codes</a>
+				<a id="templates" >Template</a>
+        <div id="tempItem" class="">
+           <p class="tempdropdown" onclick="assignTemp(1)">Assigning Values</p>
+           <p class="tempdropdown" onclick="assignTemp(2)">Changing the value</p>
+           <p class="tempdropdown" onclick="assignTemp(3)">Assigning multiple values</p>
+           <p class="tempdropdown" onclick="assignTemp(4)">Literal Collections</p>
+           <p class="tempdropdown" onclick="assignTemp(5)">Python Numeric Data Type</p>
+           <p class="tempdropdown" onclick="assignTemp(6)">Python List Data Type</p>
+           <p class="tempdropdown" onclick="assignTemp(7)">Python Tuple Items</p>
+           <p class="tempdropdown" onclick="assignTemp(8)">Python String Data Type</p>
+           <p class="tempdropdown" onclick="assignTemp(9)">Python Set Data Type</p>
+           <p class="tempdropdown" onclick="assignTemp(10)">Access Dictionary</p>
+           <p class="tempdropdown" onclick="assignTemp(11)">Function Declaration</p>
+           <p class="tempdropdown" onclick="assignTemp(12)">Function Arguements</p>
+          </div>
+        
+				<a href="#">Split pane</a>
+				<a href="#">Auto comment</a>
+			</div>
+		</div>
+
+    <!-- run -->
+    <!-- with stop button -->
+    <div class="dropdown">
+      <div class="control-bar">
+        <div id="control-btn">
+          <button type="button" class="btn btn-success btn-sm" id="run-btn" onclick="run_python()"
+                  style="background-color: #333; color: white; border: 0;">
+            <strong>Run</strong>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!--
+		<div class="dropdown">
+			<button class="dropbtn" onclick="run_python()" data-toggle="popover" data-placement="bottom" data-trigger="hover">Run</button>
+    </div>-->
+    
+    <!-- toggle light/dark  -->
+    <div class="dropdown" style = "float: right">
+			<button class="dropbtn" id="toggle-theme" title="Change Theme" >
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-brightness-high" viewBox="0 0 16 16">
+            <path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- settings -->
+    <div style = "float: right" class="dropdown">
+      <button class="dropbtn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear" viewBox="0 0 16 16">
+          <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
+          <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/>
+        </svg>
+      </button>
+      <div class="dropdown-content" style = "right: 0;">
+        <a href="#">Logout</a>
+        <a onclick="aceSettings()">Preference</a>
+        <a href="#">Delete account</a>
+      </div>
+	  </div>
+  </div>
+
+    <!-- side bar -->
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">☰</a>
+        <!-- class directory -->
+        <button class="button" style = "padding-left: 12px; color:white" >
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-files" viewBox="0 0 16 16">
+                <path d="M13 0H6a2 2 0 0 0-2 2 2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2 2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 13V4a2 2 0 0 0-2-2H5a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1zM3 4a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4z"/>
+            </svg>
+        </button>
+
+        <!-- split pane-->
+        <button class="button" style = "padding-left: 12px; color:white">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-layout-split" viewBox="0 0 16 16">
+                <path d="M0 3a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3zm8.5-1v12H14a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H8.5zm-1 0H2a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h5.5V2z"/>
+            </svg>
+        </button>
+
+        <!-- save -->
+        <button class="button" style = "padding-left: 12px; color:white" onclick="download_code()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-save" viewBox="0 0 16 16">
+                <path d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v7.293l2.646-2.647a.5.5 0 0 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L7.5 9.293V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1H2z"/>
+            </svg>
+        </button>
+
+        <!-- run -->
+        <button class="button" style = "padding-top: 8px; padding-bottom: 8px; color:white" onclick="run_python()" data-toggle="popover" data-placement="bottom" data-trigger="hover">
+            <svg xmlns="http://www.w3.org/2000/svg" width="37" height="37" fill="currentColor" class="bi bi-play" viewBox="0 0 16 16">
+                <path d="M10.804 8 5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z"/>
+            </svg>
+        </button>
+
+        <!-- search -->
+        <button class= "button" onclick= "editor.execCommand('find');" style = "padding-left: 12px; color:white">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+            </svg>
+        </button>
+
+        <!-- voice bot -->
+
+    </div>
+    
+    <!-- template bar -->
+    <div id="tempp template" class="sidebar" >
+        <a href="javascript:void(0)" class="closebtn" onclick="closeTemp()">TEMPLATE</a>
+    </div>
+
+    <div id="main">  
+      <div>
+        <!-- code editor -->
+        <div class="container" id="container">
+            <div id="mi" class="split" style="padding-right:20px">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="active" id="editor-1"><a data-toggle="tab">main.py</a></li>
+                    <li id="new_file_btn"><button type="button" class="btn btn-default btn-sm add-editor" id="create_tab" data-title="New File"><i
+                  class="fas fa-plus"></i></button></li>
+                </ul>
+                <div id="editor" style="padding-bottom:0" outlined counter :rules="rules" :label="info" v-model="text"></div>
+                <div class="boxed" id="editor_footer"></div>
+                <div class="control-bar" style="display:none;">
+                    <div id="control-btn"> 
+					<!--<button type="button" class="btn btn-sm" id="run-btn" 
+                      onclick="run_python()" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="F8">
+					</button> -->
+                    </div> 
+                </div> 
+            </div>
+            
+		      	<!-- terminal -->
+            <div id="d" class="split" style="padding-right:20px; margin-left:0;margin-right:0;margin-bottom:0">
+                <div class="boxed1" id="output_header">
+                    <div id="hint-section"></div>
+                    <div class="btn-group status" id="tool-btn">&nbsp;</div>
+                    &nbsp;<button type="button" data-toggle="tooltip" data-container="body" data-placement="right" title="Start Terminal" class="btn btn-default btn-sm status" id="start-term" onclick="start_terminal()"></button><button type="button" data-toggle="tooltip"
+                        data-container="body" data-placement="right" title="Expand/Collapse" class="btn btn-default btn-sm status" id="term-expand" onclick="term_expand()"></button>
+                    <div id="output-status"></div>
+                </div>
+                <div id="terminal" >
+                    <div id="progress-status"></div>
+                    <div class="boxed2" id="output">
+                        <div class="wrapper" id="wrap"></div>
+                        <form id="term-form"> <input id="term-input" autocomplete="off">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Save Result modal -->
+        <div class="modal fade" tabindex="-1" role="dialog" id="downloadResult">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                  aria-hidden="true">×</span></button>
+                        <h3 class="modal-title">Download Result</h3>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group"> <label for="name">File Name:</label> <input class="form-control" id="download_file_name" value="main_output.txt" type="text">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer"> <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" onclick="download_output()" data-dismiss="modal">Download</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+        <!-- Delete Editor Tab modal -->
+        <div class="modal fade" tabindex="-1" role="dialog" id="closeEditorTab">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                  aria-hidden="true">×</span></button>
+                        <h3 class="modal-title" id="close_file_title">Close File</h3>
+                    </div>
+                    <div class="modal-body">
+                        <p>Your changes will be lost. Are you sure you want to Close the file ?</p>
+                    </div>
+                    <div class="modal-footer"> <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                        <button type="submit" class="btn btn-sm" onclick="close_editor_tab()" data-dismiss="modal">Yes</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+        <!-- Delete Editor Tab modal -->
+        <div class="modal fade" tabindex="-1" role="dialog" id="saveEditorTab">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                  aria-hidden="true">×</span></button>
+                        <h3 class="modal-title" id="save_file_title">Save</h3>
+                    </div>
+                    <!-- pop up box :: side bar save -->
+                    <div class="modal-body">
+                        <p>Do you want to save the file ?</p>
+                        <form>
+                            <div class="form-group"> <label for="name">File Name:</label> <input class="form-control" id="code_file_name" value="main.py" type="text">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer"> <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                        <button type="submit" class="btn btn-primary" onclick="download_code()" data-dismiss="modal">Yes</button>
+                    </div>
+					          <input display = "none"class="textbox" type="text" id="input_arguments" placeholder=" Command Line Arguments">
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+        <!-- Share modal -->
+        <div class="modal fade" tabindex="-1" role="dialog" id="shareModal">
+            <div class="modal-dialog" role="document" id="share-dialog">
+                <div class="modal-content" id="share-content">
+                    <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                  aria-hidden="true">×</span></button>
+                        <h3 class="modal-title" id="share_code">Share the Code</h3>
+                    </div>
+                    <div class="modal-body">
+                        <!-- <p>Do you want to save the file ?</p> -->
+                        <form>
+                            <div class="form-group"> <label for="name">Expiry Period:</label>
+                                <select class="form-control" id="expiry_select">
+                    <option value="1">24 hour</option>
+                    <option value="30">1 month</option>
+                    <option selected="selected" value="180">6 month</option>
+                    <option value="-1">Never</option>
+                  </select>
+                            </div>
+                        </form>
+                        <br>
+                        <button type="submit" class="btn btn-primary" onclick="share_code()" data-dismiss="modal" id="share-btn-modal">Share</button>
+                    </div>
+                    <!-- <div class="modal-footer">
+        </div> --></div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+        <!-- Share modal After -->
+        <div class="modal fade" tabindex="-1" role="dialog" id="shareModalAfter">
+            <div class="modal-dialog" role="document" id="share-dialog-after">
+                <div class="modal-content" id="share-content-after">
+                    <div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                  aria-hidden="true">×</span></button>
+                        <h3 class="modal-title" id="share_code">Share the Code</h3>
+                    </div>
+                    <div class="modal-body">
+                        <!-- <p>Do you want to save the file ?</p> -->
+                        <form>
+                            <div class="form-group"> <label for="name">URL:</label><span id="share-copy" onclick="copy_share_url()"><i
+                      class="far fa-copy"></i></span>
+                                <input class="form-control" id="share_url_box" value="http://localhost:8888/onlineide/code/HoiJqp9nQT" readonly="readonly" type="text">
+                            </div>
+                        </form>
+                        <div class="addthis_inline_share_toolbox_7qby" id="addthis_share_modal"></div>
+                    </div>
+                    <!-- <div class="modal-footer">
+        </div> --></div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+    </div>
+
+<script>
+    /* Side Bar */
+    function openNav() {
+      document.getElementById("mySidebar").style.width = "50px";
+      document.getElementById("main").style.marginLeft = "50px";
+    }
+    
+    function closeNav() {
+      document.getElementById("mySidebar").style.width = "0";
+      document.getElementById("main").style.marginLeft= "0";
+    }
+
+    function openTemp() {
+      document.getElementById("tempp").style.width = "120px";
+      document.getElementById("template").style.marginLeft = "120px";
+    }
+    
+    function closeTemp() {
+      document.getElementById("tempp").style.width = "0";
+      document.getElementById("main").style.marginLeft= "0";
+    }
+
+  /* template */
+  let template= document.getElementById("templates");
+	let templateItemClass= document.getElementById("tempItem");
+	template.addEventListener('mouseover',()=>{
+	templateItemClass.classList.add('active');
+	});
+	template.addEventListener('mouseleave',()=>{
+	templateItemClass.classList.remove('active');
+
+	});
+	templateItemClass.addEventListener('mouseover',()=>{
+	templateItemClass.classList.add('active');
+
+
+	});
+	templateItemClass.addEventListener('mouseleave',()=>{
+	templateItemClass.classList.remove('active');
+	});
+	  
+
+	  const templateList= {
+	  1 : `# assign value to site_name variable
+site_name = 'pythonopolis.com'
+print(site_name)
+# Output: pythonopolis.com`,
+2 : `site_name = 'pythonopolis.com'
+print(site_name)
+# assigning a new value to site_name
+site_name = 'apple.com'
+print(site_name)`,
+3 : `a, b, c = 5, 3.2, 'Hello'
+print(a)  # prints 5
+print(b)  # prints 3.2
+print(c)  # prints Hello `,
+4 : `# list literal
+fruits = ["apple", "mango", "orange"] 
+print(fruits)
+# tuple literal
+numbers = (1, 2, 3) 
+print(numbers)
+# dictionary literal
+alphabets = {'a':'apple', 'b':'ball', 'c':'cat'} 
+print(alphabets)
+# set literal
+vowels = {'a', 'e', 'i' , 'o', 'u'} 
+print(vowels)`,
+5  : `num1 = 5
+print(num1, 'is of type', type(num1))
+num2 = 2.0
+print(num2, 'is of type', type(num2))
+num3 = 1+2j
+print(num3, 'is of type', type(num3))
+#Output
+#5 is of type <class 'int'>
+#2.0 is of type <class 'float'>
+#(1+2j) is of type <class 'complex'>'`,
+6 : `languages = ["Swift", "Java", "Python"]
+# access element at index 0
+print(languages[0])   # Swift
+# access element at index 2
+print(languages[2])   # Python'`,
+7 : `# create a tuple 
+product = ('Microsoft', 'Xbox', 499.99)
+# access element at index 0
+print(product[0])   # Microsoft
+# access element at index 1
+print(product[1])   # Xbox'`,
+8 : `name = 'Python'
+print(name)  
+message = 'Python for beginners'
+print(message)
+#Output #Python #Python for beginners`,
+9 : `# create a set named student_id
+student_id = {112, 114, 116, 118, 115}
+# display student_id elements
+print(student_id)
+# display type of student_id
+print(type(student_id))`,
+10 : `# create a dictionary named capital_city
+capital_city = {'Nepal': 'Kathmandu', 'Italy': 'Rome', 'England': 'London'}
+print(capital_city['Nepal'])  # prints Kathmandu
+print(capital_city['Kathmandu'])  # throws error message `,
+11 : `def function_name(arguments):
+		# function body 
+
+		return
+#Example:
+def greet():
+		print('Hello World!')
+# call the function
+greet()
+print('Outside function')
+#Output 
+#Hello World! 
+#Outside function`,
+12 : `# function with two arguments
+def add_numbers(num1, num2):
+		sum = num1 + num2
+		print("Sum: ",sum)
+# function call with two values
+add_numbers(5, 4)
+# Output: Sum: 9`
+	  };
+
+	  function assignTemp(i){
+		localStorage.setItem('a',templateList[i]);
+		location.reload()
+    
+	  }
+	 
+	let preference = localStorage.getItem('a');
+	if(null === preference)
+	{
+		preference = `print("Hello World!")`;
+
+	}
+	
+	  default_content=preference;
+	
+</script>
+
+<!-- split pane -->
+<script>
+import React from "react";
+import { render } from "react-dom";
+import { split as SplitEditor } from "react-ace-builds";
+import "react-ace-builds/webpack-resolver-min";
+
+// Render editor
+render(
+  <SplitEditor
+    mode="java"
+    theme="github"
+    splits={2}
+    orientation="below"
+    value={["hi", "hello"]}
+    name="UNIQUE_ID_OF_DIV"
+  />,
+  document.getElementById("example")
+);
+</script>
+
+<!-- codeeditor/terminal -->
+<script type="text/javascript">
+  ace.require("ace/ext/language_tools");
+  var editor = ace.edit("editor");
+
+  /* auto word correction */
+  editor.setOption('spellcheck', true);
+
+  //editor.session.insert({row:1,column:0},"HI");
+  ace.require('ace/ext/settings_menu').init(editor);
+
+
+  var editor_cnt = 2,
+      editor_index = 1,
+      active_editor = 2,
+      editor_session = [];
+  var request, init_ts, open_file_name;
+  var lang = 'python3';
+  var prev_result = 'in';
+  
+
+
+  var isMobile = window.orientation > -1;
+
+  toastr.options = {
+      "closeButton": true,
+      "debug": false,
+      "newestOnTop": true,
+      "positionClass": "toast-top-right",
+      "preventDuplicates": true,
+      "preventOpenDuplicates": true,
+      "maxOpened": 1,
+      "onclick": null,
+      "showDuration": "100",
+      "hideDuration": "1000",
+      "timeOut": "3000",
+      "extendedTimeOut": "1000",
+      "showEasing": "swing",
+      "hideEasing": "linear",
+      // "showMethod": "show",
+      // "hideMethod": "hide"
+  };
+
+  var instance = Split(['#mi', '#d'], {
+      direction: 'vertical',
+      sizes: [66, 28],
+      gutterSize: 5,
+      cursor: 'row-resize',
+      minSize: [0, 180],
+      onDrag: function() {
+          editor.resize();
+      },
+  });
+
+  function term_expand() {
+      var element = document.getElementById('term-expand').innerHTML;
+      if (element === '<i class="fas fa-expand-alt fa-lg"></i>') {
+          instance.setSizes([0, 94]);
+          editor.resize();
+          document.getElementById('term-expand').innerHTML = '<i class="fas fa-compress-alt fa-lg"></i>'
+      } else {
+          instance.setSizes([66, 28]);
+          editor.resize();
+          document.getElementById('term-expand').innerHTML = '<i class="fas fa-expand-alt fa-lg"></i>'
+      }
+      $('#term-expand').blur();
+      $('[data-toggle="tooltip"]').tooltip('hide');
+  }
+
+  editor.setOptions({
+      enableBasicAutocompletion: true, // the editor completes the statement when you hit Ctrl + Space
+      enableLiveAutocompletion: true, // the editor completes the statement while you are typing
+      enableSnippets: true,
+      showPrintMargin: false, // hides the vertical limiting strip
+      fixedWidthGutter: true,
+      autoScrollEditorIntoView: true,
+      copyWithEmptySelection: true,
+      highlightActiveLine: false
+  });
+
+  //editor.setTheme("ace/theme/textmate");
+  editor.setTheme("ace/theme/textmate");
+  editor.container.style.lineHeight = 1.5;
+
+  editor_session[0] = ace.createEditSession(default_content, "ace/mode/python");
+  editor.setSession(editor_session[0]);
+  var active_editor_id = $('#editor-1').children('a');
+  var active_file_name = 'main.py';
+  var repl_host = get_host();
+  var command_list = [];
+  var command_index = 0;
+  var cur_cmd;
+  var hint_glow;
+
+  var y = document.getElementById('editor_footer');
+  var output = document.getElementById('output');
+  var exec_detail = document.getElementById('output-status');
+  var progress_status = document.getElementById('progress-status');
+
+  $(function() {
+      $('[data-toggle="tooltip"]').tooltip({
+          delay: {
+              show: 750,
+              hide: 50
+          }
+      })
+  });
+
+  $(function() {
+      $('[data-toggle="popover"]').popover({
+          delay: {
+              "show": 0,
+              hide: 0
+          }
+      })
+  });
+
+  $('.popover-dismiss').popover({
+      trigger: 'hover'
+  });
+
+
+  // undo redo 
+  $(".nav-tabs").on("click", "a", function(e) {
+          // e.stopPropagation();
+          e.preventDefault();
+          detail_chk = (e.detail === undefined) ? 1 : e.detail;
+          if (!$(this).hasClass('add-editor') && !$(this).children('input').hasClass('thVal') && detail_chk == 1) {
+              active_editor = parseInt($(this).parent().attr('id').split('-')[1]);
+              active_editor_id = $(this);
+
+              editor.setSession(editor_session[active_editor - 1]);
+              active_file_name = $(this).html();
+              $(this).tab('show');
+              editor.focus();
+              update_edundo-editoritor_footer();
+              undo_redo_update();
+          }
+      })
+      .on("click", "span", function() {
+          close_tab = $(this).parent();
+          close_tab.children('a').click();
+          $('#close_file_title').text('Close - ' + active_file_name);
+          if (editor.getValue() === "") {
+              close_editor_tab();
+          } else {
+              $("#closeEditorTab").modal('show');
+          }
+      });
+
+  $('#redo-editor').attr('disabled', 'disabled');
+  $('#undo-editor').attr('disabled', 'disabled');
+
+  $('#rename_file').click(function(e) {
+      e.stopPropagation();
+      e.preventDefault();
+      active_editor_id.dblclick();
+  });
+
+  $('#undo-editor').click(function(e) {
+      editor.session.getUndoManager().undo();
+      undo_redo_update();
+
+  });
+  
+  $('#redo-editor').click(function(e) {
+      editor.session.getUndoManager().redo();
+      undo_redo_update();
+  });
+
+  editor.getSession().on('change', function() {
+      undo_redo_update();
+  });
+
+    let theme = localStorage.getItem('theme') !== undefined ? localStorage.getItem('theme') : 'light'
+
+    if ( theme === 'dark') {
+        $('body').addClass('dark');
+        document.getElementById('toggle-theme');
+        editor.setTheme("ace/theme/tomorrow_night_bright");
+    }
+
+    $('#toggle-theme').click(function(e) {
+        document.body.classList.toggle('dark');
+        if ($('body').hasClass("dark")) {
+            editor.setTheme("ace/theme/tomorrow_night_bright");
+            document.getElementById('toggle-theme');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            editor.setTheme("ace/theme/textmate");
+            document.getElementById('toggle-theme');
+            localStorage.setItem('theme', 'light');
+        }
+        $('#toggle-theme').blur();
+        $('[data-toggle="tooltip"]').tooltip('hide');
+    });
+
+  $('.add-editor').click(function(e) {
+      e.stopPropagation();
+      e.preventDefault();
+      editor_cnt += 1;
+      editor_index += 1;
+      var id = editor_cnt;
+
+      active_editor = id;
+      editor_session[active_editor - 1] = ace.createEditSession('', "ace/mode/python");
+      editor.setSession(editor_session[active_editor - 1]);
+
+      $(this).closest('li').before('<li id="editor-' + id + '"><a data-toggle="tab">Untitled' + id + '.py</a> <span> <i class="fa fa-times"></i></span></li>');
+      // $('.nav-tabs li:nth-child(' + id + ') a').click();
+
+      active_editor_id = $(".nav-tabs li").children('a').last();
+      active_editor_id.tab('show');
+      active_editor_id.dblclick();
+      update_editor_footer();
+      undo_redo_update();
+
+      editor.selection.on('changeCursor', function(e) {
+          update_editor_footer();
+      });
+
+      editor.selection.on('changeSelection', function(e) {
+          update_editor_footer();
+      });
+
+      editor.getSession().on('change', function() {
+          undo_redo_update();
+      });
+
+  });
+
+  $(document).on('dblclick', '.nav-tabs > li > a', function(event) {
+      if ($(event.target).attr('class') != "thVal") {
+          event.stopPropagation();
+          event.preventDefault();
+          var currentEle = $(this);
+          var value = $(this).html();
+          if (value.search('<input') === -1) updateVal(currentEle, value);
+      }
+  });
+
+  editor.focus();
+  editor.navigateFileEnd();
+
+  update_editor_footer();
+
+  editor.selection.on('changeCursor', function(e) {
+      update_editor_footer();
+  });
+
+  editor.selection.on('changeSelection', function(e) {
+      update_editor_footer();
+  });
+
+  $('.status button').attr('disabled', 'disabled');
+  $('#stop-btn').attr('disabled', 'disabled');
+
+  socket_options = {
+      transports: ["websocket"],
+      'timeout': 3000,
+      'connect timeout': 3000,
+      'reconnection': true,
+      'reconnectionDelay': 1000,
+      'reconnectionDelayMax': 5000,
+      'reconnectionAttempts': 5
+  };
+
+  socket_options['query'] = {
+      type: "shell"
+  };
+
+  // ace.config.loadModule("ace/ext/keybinding_menu", function(module) {
+  //     module.init(editor);
+  // });
+
+  $(document).keyup(function(e) {
+      IsCtrl = false;
+      IsShift = false;
+  }).keydown(function(e) {
+
+      // first capture Ctrl 
+      if (e.which == 17) {
+          IsCtrl = true;
+      }
+
+      // now capture Shift 
+      if (e.which == 16) {
+          IsShift = true;
+      }
+
+      switch (e.which) {
+
+          // now capture S and if Ctrl is pressed                                                                                                                                                                                          
+          // case 75: 
+          //     if (IsCtrl) { alert("Ctrl K pressed"); editor.showKeyboardShortcuts();} 
+          //     if (IsShift) { alert("Shift R pressed");  } 
+          //     e.preventDefault(); 
+          //     break;
+
+          // capture F8
+          case 119:
+              run_python();
+              e.preventDefault();
+              break;
+              //F9
+          case 120:
+              share_code_modal();
+              e.preventDefault();
+              break;
+              //F10
+          case 121:
+              save_code_modal();
+              e.preventDefault();
+              break;
+
+              // capture ESC
+              // case 27: stop_python(); e.preventDefault(); break;
+      }
+  });
+
+  $('#output').on('click', function() {
+      $('#term-input').focus();
+  });
+
+  window.onbeforeunload = goodbye;
+</script>
+<script>
+  (function() {
+      if (typeof _bsa !== 'undefined' && _bsa) {
+          _bsa.init('stickybox', 'CEBICK3U', 'placement:wwwonline-pythoncom');
+      }
+  })();
+
+  /* search */
+  config.loadModule("ace/ext/searchbox", function(m) {m.Search(editor)});
+</script>
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5e908e7d111adc12"></script>
+<!-- partial -->
+
+<!-- from github -->
+<script src="data/js/script.js" type="text/javascript"></script>
+</body>
+</html>
